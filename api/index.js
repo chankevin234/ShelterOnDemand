@@ -23,7 +23,7 @@ client.connect((err) => {
   if (err) throw err;
   else {
     console.log("Hi there");
-    //queryDatabase(); // will need to change...
+    queryDatabase(); // will need to change...
   }
 });
 
