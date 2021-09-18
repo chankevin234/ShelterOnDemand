@@ -16,7 +16,8 @@ const client = new pg.Client(config);
 client.connect((err) => {
   if (err) throw err;
   else {
-    queryDatabase();
+    console.log("Hi there");
+    queryDatabase(); // will need to change...
   }
 });
 
@@ -40,5 +41,23 @@ function queryDatabase() {
     .then(() => {
       console.log("Finished execution, exiting now");
       process.exit();
+    });
+}
+
+function addBooking() {
+  const query = `
+      UPDATE inventory 
+      SET quantity= 1000 WHERE name='banana';
+  `;
+
+  client
+    .query(query)
+    .then((result) => {
+      console.log("Update completed");
+      console.log(`Rows affected: ${result.rowCount}`);
+    })
+    .catch((err) => {
+      console.log(err);
+      throw err;
     });
 }
