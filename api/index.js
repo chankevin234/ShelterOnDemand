@@ -4,11 +4,11 @@ const config = {
   host: "kevin-khubaib-instance.postgres.database.azure.com",
   // Do not hard code your username and password.
   // Consider using Node environment variables.
-  user: "Username",
+  user: "Username@kevin-khubaib-instance",
   password: "#12345678a",
   database: "kevin-khubaib-instance",
   port: 5432,
-  ssl: true,
+  //   ssl: true,
 };
 
 const client = new pg.Client(config);
@@ -17,7 +17,7 @@ client.connect((err) => {
   if (err) throw err;
   else {
     console.log("Hi there");
-    queryDatabase(); // will need to change...
+    //queryDatabase(); // will need to change...
   }
 });
 
@@ -44,20 +44,20 @@ function queryDatabase() {
     });
 }
 
-function addBooking() {
-  const query = `
-      UPDATE inventory 
-      SET quantity= 1000 WHERE name='banana';
-  `;
+// function addBooking() {
+//   const query = `
+//       UPDATE inventory
+//       SET quantity= 1000 WHERE name='banana';
+//   `;
 
-  client
-    .query(query)
-    .then((result) => {
-      console.log("Update completed");
-      console.log(`Rows affected: ${result.rowCount}`);
-    })
-    .catch((err) => {
-      console.log(err);
-      throw err;
-    });
-}
+//   client
+//     .query(query)
+//     .then((result) => {
+//       console.log("Update completed");
+//       console.log(`Rows affected: ${result.rowCount}`);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       throw err;
+//     });
+// }
