@@ -56,6 +56,7 @@
           <li class="nav-item"><a href="ourTeam.html" class="nav-link link-light">Our Team</a></li>
           <li class="nav-item"><a href="faq.html" class="nav-link link-light">FAQ</a></li>
           <li class="nav-item"><a href="contactUs.html" class="nav-link link-light">Contact Us</a></li>
+          <li class="nav-item"><a href="booking.html" class="nav-link link-light">Book A Time</a></li>
         </ul>
       </div>
       
@@ -83,7 +84,7 @@
   <!-- Header -->
   <div class="py-5 text-center">
     <h2>Shelter Form</h2>
-    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+    <p class="lead">Below is a form to book a spot in a shelter within Ontario. Please enter the required information to ensure you are assigned for a spot.</p>
   </div>
 
   <!-- Booking Information -->
@@ -120,10 +121,16 @@
 
             <!-- Location -->
             <div class="col-md-6">
-              <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+              <label for="country" class="form-label">Shelter Location</label>
+              <select class="form-select" id="country" required>
+                <option value="">Choose...</option>
+                <option>1 Main St.</option>
+                <option>2 Main St.</option>
+                <option>3 Main St.</option>
+                <option>4 Main St.</option>
+              </select>
               <div class="invalid-feedback">
-                Please enter your shipping address.
+                Please select a valid location.
               </div>
             </div>
 
@@ -138,17 +145,34 @@
                 <option>4</option>
               </select>
               <div class="invalid-feedback">
-                Please select a valid country.
+                Please select a valid number.
               </div>
             </div>
 
             <!-- Date & Time -->
-            
+            <div class="row form-group">
+              <label for="date" class="col-sm-1 col-form-label">Date</label>
+              <div class="col-sm-4">
+                <div class="input-group date" id="datepicker">
+                  <input type="text" class="form-control">
+                  <span class="input-group-append">
+                    <span class="input-group-text bg-white d-block">
+                      <i class="fa fa-calender"></i>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            <div class="class"></div>
           <hr class="my-4">
             <!-- Submit Button-->
           <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
         </form>
       </div>
+      <script type="text/javascript">
+        $(function() {
+          $('#datetimepicker').datetimepicker();
+        });
+      </script>
 
 
 
