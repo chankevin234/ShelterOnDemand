@@ -13,6 +13,12 @@ const config = {
 
 const client = new pg.Client(config);
 
+// client
+//   .connect()
+//   .then(() => console.log("Connected Successfully!"))
+//   .catch((e) => console.log())
+//   .finally(() => client.end());
+
 client.connect((err) => {
   if (err) throw err;
   else {
