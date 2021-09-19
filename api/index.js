@@ -49,7 +49,7 @@ client.connect((err) => {
     //   50
     // );
     //insertHomelessData("Edmund", "ed@gmail.com");
-    updateShelter("21 Gerrard St E, Toronto, ON M5B 2P3", "hi", "bye", 1);
+    updateShelter("21 Gerrard St E, Toronto, ON M5B 2P3", null, null, 75);
     //viewShelterTable();
     //viewBookingTable();
     //viewHomelessTable();
@@ -253,16 +253,79 @@ function viewBookingTable() {
 }
 
 function updateShelter(location, newName, newLocation, newCapacity) {
-  var query = "SELECT * FROM shelters WHERE location=$1;";
+  //   var query = "SELECT (shelterName, capacity) FROM shelters WHERE location=$1;";
+  //   var values = [location];
 
+  var query = {
+    text: "SELECT shelterName FROM shelters WHERE location=$1;",
+    values: [location],
+    rowMode: "array",
+  };
+
+  var previousName = " ";
   client
-    .query(query, [location])
+    .query(query)
     .then((result) => {
-      console.log(result.rows[0]);
-      //console.log(result.rows[0]);
+      previousName = result.rows[0][0];
+      if ((newName = null)) {
+        newName = previousName;
+      }
+
+      query = {
+        text: "SELECT capacity FROM shelters WHERE location=$1;",
+        values: [location],
+        rowMode: "array",
+      };
+
+      var previousCapacity = 0;
+      client
+        .query(query)
+        .then((result) => {
+          previousCapacity = result.rows[0][0];
+          if ((newCapacity = null)) {
+            newCapacity = previousCapacity;
+          }
+          if ((newLocation = null)) {
+            newLocation = location;
+          }
+
+          console.log(newName);
+          console.log(newCapacity);
+          console.log(newLocation);
+
+          query = {
+            text: "UPDATE shelters SET (shelterName=$1, location=$2, capacity=$3) WHERE location=$4;",
+            values: [newName, newLocation, newCapacity, location],
+            rowMode: "array",
+          };
+
+          client
+            .query(query)
+            .then(() => {
+              console.log("Successful in update.");
+            })
+            .catch((err) => {
+              console.log(err);
+              throw err;
+            })
+            .finally(() => {
+              console.log("Successfully updated");
+              process.exit();
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+          throw err;
+        })
+        .finally(() => {
+          console.log("Capacity Found");
+        });
     })
     .catch((err) => {
       console.log(err);
       throw err;
+    })
+    .finally(() => {
+      console.log("Name found");
     });
 }
