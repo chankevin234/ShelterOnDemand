@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Shelter On Demand</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/carousel/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style> -->
+
+    
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+  </head>
+ 
+   
+<header>
+
+ <!-- Navbar -->
+ <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Carousel</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="nav me-auto">
+        <li class="nav-item"><a href="index.html" class="nav-link active link-light" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="aboutUs.html" class="nav-link link-light">About Us</a></li>
+        <li class="nav-item"><a href="ourTeam.html" class="nav-link link-light">Our Team</a></li>
+        <li class="nav-item"><a href="faq.html" class="nav-link link-light">FAQ</a></li>
+        <li class="nav-item"><a href="contactUs.html" class="nav-link link-light">Contact Us</a></li>
+      </ul>
+      
+      <ul class="nav">
+        <li class="nav-item"><a href="signIn.html" class="nav-link link-light">Login</a></li>
+        <li class="nav-item"><a href="signUp.html" class="nav-link link-light">Sign up</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+</header>
+
+<body>
+<main>
+
+
+<!-- Carousel Pictures -->
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <!-- Item #1 -->
+      <div class="carousel-item active">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        <img src="../src/img/shelterBed.jpg" alt="">
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1><b>HELP US GET LIVES BACK ON TRACK.</b></h1>
+            <p>Connecting our community to opportunity</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item #2 -->
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        <img src="../src/img/volunteers.jpg" alt="">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1><b>COMPASSION INTO ACTION</b></h1>
+            <p>We strive to make meaningful interactions with those who need</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+          </div>
+        </div>h
+      </div>
+
+       <!-- Item #3 -->
+      <div class="carousel-item">
+        <svg class="bd-placeolder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        <img src="../src/img/handOut.jpg" alt="">
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <h1><b>TRANSFORMING ONTARIO ONE STEP AT A TIME</b></h1>
+            <p>Potential to bring a better generation</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">We're here for a good reason.<span class="text-muted"> It’ll blow your mind.</span></h2>
+        <p class="lead">We believe that it is our duty to serve each other though acts of giving and hospitality by allowing people to be able to find places to get them back on track!</p>
+      </div>
+      <div class="col-md-5">
+        <img class="bd-placeholder-img" width="500" height="500" src="../src/img/Homeless1.jpg" alt="">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading"> We manages social enterprises and other services that help shelter residents transition into their own housing. <span class="text-muted"> Positivity at its finest.</span></h2>
+        <p class="lead">Change begins and ends with people. Our motivation has always been about helping people rise out of poverty and realize their full potential. Come find out how you can be a part of this change!</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img class="bd-placeholder-img" width="500" height="500" src="../src/img/Homeless2.jpg" alt="">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Over 60 locations to serve people experiencing homelessness. <span class="text-muted">Come and book yourself a spot.</span></h2>
+        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+      </div>
+      <div class="col-md-5">
+        <img class="bd-placeholder-img" width="500" height="500"src="../src/img/Homeless3.jpg" alt="">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </footer>
+</main>
+</body>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      
+  
+</html>
