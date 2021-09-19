@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Shelter On Demand</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/carousel/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="#">Carousel</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="nav me-auto">
+          <li class="nav-item"><a href="index.html" class="nav-link active link-light" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="aboutUs.html" class="nav-link link-light">About Us</a></li>
+          <li class="nav-item"><a href="ourTeam.html" class="nav-link link-light">Our Team</a></li>
+          <li class="nav-item"><a href="faq.html" class="nav-link link-light">FAQ</a></li>
+          <li class="nav-item"><a href="contactUs.html" class="nav-link link-light">Contact Us</a></li>
+        </ul>
+      </div>
+      
+      <div class="dropdown text-end">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="dropdownUser1">
+          <li><a class="dropdown-item" href="mybooking.html">My Bookings</a></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="index.html">Sign out</a></li>
+        </ul>
+      </div>
+      
+    </div>
+    
+    
+  </nav>
+</header>
+
+
+<div class="container">
+<main>
+
+    <!-- Your Booking -->
+    <div class="py-5 text-center">
+        <h2>Your Booking</h2>
+        <p class="lead">Below shows the current and past bookings you have made.</p>
+      </div>
+
+    <div class="py-3">
+        <h4 class="mb-3">Current Booking</h4>
+        <div class="card mb-3">
+            <div class="row g-0">
+                <!-- Left Side -->
+              <div class="col-md-6">
+                <div id="map"></div>
+                <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdr-M-Vr9vwZ7jbAVZzOgUIl5ntHds5Hc&callback=initMap&v=weekly"
+                async
+                ></script>
+              </div>
+
+              <!-- Right Side -->
+              <div class="col-md-6">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Name: </b> Joseph Smith</li>
+                    <li class="list-group-item"><b>Location: </b>Cawthra Shelter, 2500 Cawthra Rd, Mississauga, ON L5E 2X3</li>
+                    <li class="list-group-item"><b>Number of people: </b>1</li>
+                    <li class="list-group-item"><b>Date: </b>2021/09/18</li>
+                  </ul>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        
+    </div>
+
+    <div class="py-3">
+        <h4 class="mb-3">Past Booking</h4>
+
+        <div class="card mb-3">
+
+        <!-- Past #1 -->
+        <div class="col-md-12">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>Name: </b>Joseph Smith</li>
+                <li class="list-group-item"><b>Location: </b>Covenant House Toronto, 20 Gerrard St E, Toronto, ON M5B 2P3</li>
+                <li class="list-group-item"><b>Number of people: </b>2</li>
+                <li class="list-group-item"><b>Date: </b>2021/09/15</li>
+              </ul>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Past #2 -->
+        <div class="card mb-3">
+            <div class="col-md-12">
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Name: </b>Jenna Ho</li>
+                    <li class="list-group-item"><b>Location: </b>Maxwell Meighen Centre, 135 Sherbourne St, Toronto, ON M5A 2R5</li>
+                    <li class="list-group-item"><b>Number of people: </b>1</li>
+                    <li class="list-group-item"><b>Date: </b>2021/09/14</li>
+                </ul>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    
+
+
+</main>
+</div>
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="map.js"></script>
+
+      
+  </body>
+</html>
