@@ -1,4 +1,5 @@
 const pg = require("pg");
+const { v4: uuidv4 } = require("uuid");
 
 const config = {
   host: "kevin-khubaib-instance.postgres.database.azure.com",
@@ -13,14 +14,19 @@ const config = {
 
 //List of all the functions
 //----------------------------------------
-//- Insert shelter data
-//- update shelter data
-//- delete shelter data
-//- retrieve shelter data
-//- insert homeless
-//- update homeless
-//- delete homeless
-//- update shelter count
+//- (*) CREATE 3 Tables: Booking, Homeless, Shelter
+
+//- (*)Insert shelter data (arguments: name, location, capacity)
+//- update shelter data (arguments: id, name, location, capacity)
+//- delete shelter data (arguments: id)
+//- (*) retrieve shelter data (arguments: id)
+//- (*) insert homeless: (arguments: name, email)
+//- update homeless: (arguments: id, name, email)
+//- delete homeless: (arguments: id)
+//- (*) retrieve homeless: (arguments: id)
+//- (*) create booking: (arguments: shelterID, homelessID, startDate, startTime, endDate, endTime)
+//- (*) retrieve booking: (arguments: shelterID)
+//- delete booking (arguments: shelterID)
 
 const client = new pg.Client(config);
 
@@ -34,42 +40,33 @@ client.connect((err) => {
   if (err) throw err;
   else {
     console.log("Hi there");
-    //queryDatabase(); // will need to change...
-    //addInventory();
     //createShelterDatabase();
     //createHomelessDatabase();
-    createBookingsDatabase();
-    //viewTable();
+    //createBookingsDatabase();
+    // insertShelterData(
+    //   "Not the Covenant House",
+    //   "21 Gerrard St E, Toronto, ON M5B 2P3",
+    //   50
+    // );
+    //insertHomelessData("Edmund", "ed@gmail.com");
+    updateShelter("21 Gerrard St E, Toronto, ON M5B 2P3", "hi", "bye", 1);
+    //viewShelterTable();
+    //viewBookingTable();
+    //viewHomelessTable();
     //client.then(() => viewTable();)
     // addBooking();
   }
 });
 
-function addInventory() {
-  const query = `
-    INSERT INTO inventory (name, quantity) VALUES ('pineapples', 35);
-    `;
-
-  client
-    .query(query)
-    .then(() => {
-      console.log("Successfully added item to inventory");
-    })
-    .catch((err) => console.log(err))
-    .finally(() => {
-      console.log("Ending adding process.");
-      process.exit();
-    });
-}
-
+// ----- CREATE Tables
 function createShelterDatabase() {
   //create and insert tables
   const query = `
-        DROP TABLE IF EXISTS inventory;
-        DROP TABLE IF EXISTS shelters;
-        CREATE TABLE shelters (shelterId UUID PRIMARY KEY, shelterName VARCHAR(100), location VARCHAR(100), capacity INTEGER);
-        SELECT * FROM shelters;
-    `;
+          DROP TABLE IF EXISTS inventory;
+          DROP TABLE IF EXISTS shelters;
+          CREATE TABLE shelters (shelterId UUID PRIMARY KEY, shelterName VARCHAR(100), location VARCHAR(100), capacity INTEGER);
+          SELECT * FROM shelters;
+      `;
 
   client
     .query(query)
@@ -88,11 +85,11 @@ function createShelterDatabase() {
 function createHomelessDatabase() {
   //create and insert tables
   const query = `
-        DROP TABLE IF EXISTS inventory;
-        DROP TABLE IF EXISTS homeless;
-        CREATE TABLE homeless (personID UUID PRIMARY KEY, name VARCHAR(100), email VARCHAR(75) UNIQUE);
-        SELECT * FROM homeless;
-    `;
+          DROP TABLE IF EXISTS inventory;
+          DROP TABLE IF EXISTS homeless;
+          CREATE TABLE homeless (personID UUID PRIMARY KEY, name VARCHAR(100), email VARCHAR(75));
+          SELECT * FROM homeless;
+      `;
 
   client
     .query(query)
@@ -111,15 +108,15 @@ function createHomelessDatabase() {
 function createBookingsDatabase() {
   //create and insert tables
   const query = `
-        DROP TABLE IF EXISTS bookings
-        CREATE TABLE bookings (bookingID UUID PRIMARY KEY, personID VARCHAR(75), bookingID VARCHAR(75), startDate DATE, endDate DATE,);
-        SELECT * FROM bookings;
-    `;
+          DROP TABLE IF EXISTS bookings;
+          CREATE TABLE bookings (bookingID UUID PRIMARY KEY, personID VARCHAR(75), shelterID VARCHAR(75), startDate DATE, startTime TIME, endDate DATE, endTime TIME);
+          SELECT * FROM bookings;
+      `;
 
   client
     .query(query)
     .then((result) => {
-      console.log("Homeless Table created successfully!");
+      console.log("Booking Table created successfully!");
       console.table(result.rows);
       client.end(console.log("Closed client connection"));
     })
@@ -130,11 +127,105 @@ function createBookingsDatabase() {
     });
 }
 
-function viewTable() {
+// ----- DATA INSERTING FUNCTIONS
+function insertShelterData(shelterName, place, max) {
+  // const query = `
+  //   INSERT INTO shelters (shelterName, location, capacity)
+  //   VALUES ("${shelterName}", "${place}", ${max});
+  //   `;
+
+  var query =
+    "INSERT INTO shelters (shelterid, shelterName, location, capacity) VALUES ($1, $2, $3, $4);";
+  var values = [uuidv4(), shelterName, place, max];
+
+  client
+    .query(query, values)
+    .then(() => {
+      console.log("Successfully added new shelter to shelters table");
+    })
+    .catch((err) => console.log(err))
+    .finally(() => {
+      console.log("Ending adding process.");
+      process.exit();
+    });
+}
+
+function insertHomelessData(name, email) {
+  var query = `
+      INSERT INTO homeless (personID, name, email)   
+      VALUES ($1, $2, $3);
+      `;
+  var values = [uuidv4(), name, email];
+
+  client
+    .query(query, values)
+    .then(() => {
+      console.log("Successfully added homeless to homeless table");
+    })
+    .catch((err) => console.log(err))
+    .finally(() => {
+      console.log("Ending adding process.");
+      process.exit();
+    });
+}
+
+function insertBooking(
+  personID,
+  shelterID,
+  startDate,
+  startTime,
+  endDate,
+  endTime
+) {
+  var query = `
+    INSERT INTO bookings (personID, shelterID, startDate, startTime, endDate, endTime)   
+    VALUES ($1, $2, $3, $4, $5, $6, $7);
+    `;
+  var values = [
+    uuidv4(),
+    personID,
+    shelterID,
+    startDate,
+    startTime,
+    endDate,
+    endTime,
+  ];
+
+  client
+    .query(query, values)
+    .then(() => {
+      console.log("Successfully added homeless to homeless table");
+    })
+    .catch((err) => console.log(err))
+    .finally(() => {
+      console.log("Ending adding process.");
+      process.exit();
+    });
+}
+
+function viewShelterTable() {
   console.log(`Running query to PostgreSQL server: ${config.host}`);
 
-  const query = "SELECT * FROM inventory;";
+  const query = "SELECT * FROM shelters";
+  client
+    .query(query)
+    .then((res) => {
+      console.table(res.rows);
+      console.log(res.fields[0].name);
+      console.log(res.fields[1].name);
+      console.log(res.fields[2].name);
+      console.log(res.fields[3].name);
+      process.exit();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
+function viewHomelessTable() {
+  console.log(`Running query to PostgreSQL server: ${config.host}`);
+
+  const query = "SELECT * FROM homeless";
   client
     .query(query)
     .then((res) => {
@@ -146,25 +237,32 @@ function viewTable() {
     });
 }
 
-function queryDatabase() {
-  //create and insert tables
-  const query = `
-        DROP TABLE IF EXISTS inventory;
-        CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);
-        INSERT INTO inventory (name, quantity) VALUES ('banana', 150);
-        INSERT INTO inventory (name, quantity) VALUES ('orange', 154);
-        INSERT INTO inventory (name, quantity) VALUES ('apple', 100);
-    `;
+function viewBookingTable() {
+  console.log(`Running query to PostgreSQL server: ${config.host}`);
 
+  const query = "SELECT * FROM bookings";
   client
     .query(query)
-    .then(() => {
-      console.log("Table created successfully!");
-      client.end(console.log("Closed client connection"));
-    })
-    .catch((err) => console.log(err))
-    .finally(() => {
-      console.log("Finished execution, exiting now");
+    .then((res) => {
+      console.table(res.rows);
       process.exit();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function updateShelter(location, newName, newLocation, newCapacity) {
+  var query = "SELECT * FROM shelters WHERE location=$1;";
+
+  client
+    .query(query, [location])
+    .then((result) => {
+      console.log(result.rows[0]);
+      //console.log(result.rows[0]);
+    })
+    .catch((err) => {
+      console.log(err);
+      throw err;
     });
 }
